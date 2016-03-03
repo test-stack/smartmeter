@@ -2,7 +2,7 @@
 FROM rdpanek/base:2.0
 MAINTAINER Radim Daniel Pánek <rdpanek@gmail.com>
 
-# main nev
+# main env
 ENV SMARTMETER_VERSION 1.1.0
 ENV SMARTMETER_DIRECTORY SmartMeter_${SMARTMETER_VERSION}L_Light
 ENV SMARTMETER_URL http://smartmeter-api.etnetera.cz/download/release/${SMARTMETER_VERSION}/linux/light/full/${SMARTMETER_DIRECTORY}.tar.gz
