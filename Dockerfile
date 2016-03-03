@@ -35,5 +35,3 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
 # Add ElasticSearchBackendListener
 ADD smartmeter-elasticsearch.jar ${SMARTMETER_PATH}programs/apache-jmeter/lib/ext/
 
-RUN cd ${SMARTMETER_PATH}programs/apache-jmeter/lib/ext/ && ls -lah
-
