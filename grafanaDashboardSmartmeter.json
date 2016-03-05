@@ -1,0 +1,1082 @@
+{
+  "id": 6,
+  "title": "Smartmeter",
+  "originalTitle": "Smartmeter",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": 239,
+      "panels": [
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "ElasticInfl",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 10,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 1.8142405471426575,
+          "sparkline": {
+            "fillColor": "rgba(220, 251, 197, 0.18)",
+            "full": true,
+            "lineColor": "rgb(65, 193, 31)",
+            "show": true
+          },
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "field": "timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "ErrorCount",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "count"
+                }
+              ],
+              "query": "",
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "thresholds": "",
+          "title": "Transactions ( smartmeter )",
+          "type": "singlestat",
+          "valueFontSize": "100%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "max"
+        },
+        {
+          "cacheTimeout": null,
+          "colorBackground": false,
+          "colorValue": false,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "datasource": "ElasticInfl",
+          "editable": true,
+          "error": false,
+          "format": "none",
+          "id": 3,
+          "interval": null,
+          "isNew": true,
+          "links": [],
+          "maxDataPoints": 100,
+          "nullPointMode": "connected",
+          "nullText": null,
+          "postfix": "",
+          "postfixFontSize": "50%",
+          "prefix": "",
+          "prefixFontSize": "50%",
+          "span": 1.7129869653774312,
+          "sparkline": {
+            "fillColor": "rgba(251, 197, 197, 0.18)",
+            "full": true,
+            "lineColor": "rgb(193, 31, 31)",
+            "show": true
+          },
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "field": "timestamp",
+                  "id": "2",
+                  "settings": {
+                    "interval": "1m",
+                    "min_doc_count": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "ErrorCount",
+                  "id": "1",
+                  "meta": {},
+                  "settings": {},
+                  "type": "sum"
+                }
+              ],
+              "query": "",
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "thresholds": "",
+          "title": "Errors ( smartmeter )",
+          "type": "singlestat",
+          "valueFontSize": "100%",
+          "valueMaps": [
+            {
+              "op": "=",
+              "text": "N/A",
+              "value": "null"
+            }
+          ],
+          "valueName": "max"
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "ElasticInfl",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 6,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": false,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "png",
+          "seriesOverrides": [
+            {
+              "alias": "200",
+              "color": "#7EB26D"
+            }
+          ],
+          "span": 4.428866868566917,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "ResponseCode",
+                  "id": "4",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "timestamp",
+                  "id": "3",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "hide": false,
+              "metrics": [
+                {
+                  "field": "GrpThreads",
+                  "id": "1",
+                  "inlineScript": null,
+                  "meta": {},
+                  "settings": {},
+                  "type": "count"
+                }
+              ],
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Status Code ( smartmeter )",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "ElasticInfl",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 4,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": false,
+            "rightSide": false,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "png",
+          "seriesOverrides": [
+            {
+              "alias": "true",
+              "color": "#7EB26D"
+            },
+            {
+              "alias": "false",
+              "color": "#BF1B00",
+              "fill": 5
+            }
+          ],
+          "span": 4.043905618912994,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "Success",
+                  "id": "4",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "timestamp",
+                  "id": "3",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "hide": false,
+              "metrics": [
+                {
+                  "field": "GrpThreads",
+                  "id": "1",
+                  "inlineScript": null,
+                  "meta": {},
+                  "settings": {},
+                  "type": "count"
+                }
+              ],
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Success transaction ( smartmeter )",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        }
+      ],
+      "title": "Row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": 210,
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "ElasticInfl",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 1,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "png",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "SampleLabel",
+                  "id": "4",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "timestamp",
+                  "id": "3",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "hide": false,
+              "metrics": [
+                {
+                  "field": "GrpThreads",
+                  "id": "1",
+                  "inlineScript": null,
+                  "meta": {},
+                  "settings": {
+                    "missing": null
+                  },
+                  "type": "max"
+                }
+              ],
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Threads by Sample ( smartmeter )",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        },
+        {
+          "aliasColors": {},
+          "bars": true,
+          "datasource": "ElasticInfl",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 9,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "png",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "SampleLabel",
+                  "id": "4",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "timestamp",
+                  "id": "3",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "hide": false,
+              "metrics": [
+                {
+                  "field": "GrpThreads",
+                  "id": "1",
+                  "inlineScript": null,
+                  "meta": {},
+                  "settings": {},
+                  "type": "count"
+                }
+              ],
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Hits ( smartmeter )",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "ElasticInfl",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 5,
+          "isNew": true,
+          "legend": {
+            "alignAsTable": true,
+            "avg": false,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": false,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 1,
+          "links": [],
+          "nullPointMode": "connected",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "png",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "SampleLabel",
+                  "id": "4",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_term",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                },
+                {
+                  "fake": true,
+                  "field": "timestamp",
+                  "id": "3",
+                  "settings": {
+                    "interval": "auto",
+                    "min_doc_count": 0
+                  },
+                  "type": "date_histogram"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "hide": false,
+              "metrics": [
+                {
+                  "field": "ResponseTime",
+                  "id": "1",
+                  "inlineScript": null,
+                  "meta": {},
+                  "settings": {},
+                  "type": "max"
+                }
+              ],
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Response time by Samples ( smartmeter )",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "ms",
+            "short"
+          ]
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": 226,
+      "panels": [
+        {
+          "content": "\n\n* green 0 - 200 ms\n* orange 200 - 1000 ms\n* red > 1000 ms\n\nMore info about: [SLA](https://en.wikipedia.org/wiki/Service-level_agreement)",
+          "editable": true,
+          "error": false,
+          "id": 8,
+          "isNew": true,
+          "links": [],
+          "mode": "markdown",
+          "span": 1.6308811802232857,
+          "style": {},
+          "title": "SLA",
+          "type": "text"
+        },
+        {
+          "columns": [
+            {
+              "text": "SampleLabel",
+              "value": "SampleLabel"
+            },
+            {
+              "text": "Count",
+              "value": "Count"
+            },
+            {
+              "text": "Min",
+              "value": "Min"
+            },
+            {
+              "text": "Average",
+              "value": "Average"
+            },
+            {
+              "text": "Max",
+              "value": "Max"
+            },
+            {
+              "text": "Percentiles",
+              "value": "Percentiles"
+            }
+          ],
+          "datasource": "ElasticInfl",
+          "editable": true,
+          "error": false,
+          "fontSize": "80%",
+          "id": 7,
+          "isNew": true,
+          "links": [],
+          "pageSize": 5,
+          "scroll": false,
+          "showHeader": true,
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "span": 10.369118819776714,
+          "styles": [
+            {
+              "colorMode": "cell",
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "pattern": "/Min|Average|Max/",
+              "thresholds": [
+                "0",
+                "200",
+                "1000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            },
+            {
+              "colorMode": null,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 3,
+              "pattern": "/Count/",
+              "thresholds": [],
+              "type": "number",
+              "unit": "short"
+            },
+            {
+              "colorMode": null,
+              "colors": [
+                "rgba(50, 172, 45, 0.97)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(245, 54, 54, 0.9)"
+              ],
+              "dateFormat": "YYYY-MM-DD HH:mm:ss",
+              "decimals": 2,
+              "pattern": "/Percentiles/",
+              "thresholds": [
+                "0",
+                "200",
+                "1000"
+              ],
+              "type": "number",
+              "unit": "ms"
+            }
+          ],
+          "targets": [
+            {
+              "bucketAggs": [
+                {
+                  "fake": true,
+                  "field": "SampleLabel",
+                  "id": "3",
+                  "settings": {
+                    "order": "asc",
+                    "orderBy": "_count",
+                    "size": "0"
+                  },
+                  "type": "terms"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "metrics": [
+                {
+                  "field": "select field",
+                  "id": "1",
+                  "type": "count"
+                },
+                {
+                  "field": "ResponseTime",
+                  "id": "4",
+                  "meta": {},
+                  "settings": {},
+                  "type": "min"
+                },
+                {
+                  "field": "ResponseTime",
+                  "id": "5",
+                  "meta": {},
+                  "settings": {},
+                  "type": "avg"
+                },
+                {
+                  "field": "ResponseTime",
+                  "id": "6",
+                  "meta": {},
+                  "settings": {},
+                  "type": "max"
+                },
+                {
+                  "field": "ResponseTime",
+                  "id": "7",
+                  "meta": {},
+                  "settings": {
+                    "percents": [
+                      "30",
+                      "50",
+                      "70",
+                      "90"
+                    ]
+                  },
+                  "type": "percentiles"
+                }
+              ],
+              "refId": "A",
+              "timeField": "timestamp"
+            }
+          ],
+          "title": "Overview per Samples ( smartmeter )",
+          "transform": "json",
+          "type": "table"
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": 530,
+      "panels": [
+        {
+          "title": "Response Message / Code ( smartmeter )",
+          "error": false,
+          "span": 3.0955980336696913,
+          "editable": true,
+          "type": "table",
+          "isNew": true,
+          "id": 11,
+          "styles": [],
+          "targets": [
+            {
+              "refId": "A",
+              "metrics": [
+                {
+                  "type": "count",
+                  "id": "1",
+                  "field": "select field"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "bucketAggs": [
+                {
+                  "type": "terms",
+                  "field": "ResponseCode",
+                  "id": "3",
+                  "fake": true,
+                  "settings": {
+                    "order": "asc",
+                    "size": "0",
+                    "orderBy": "_term"
+                  }
+                },
+                {
+                  "type": "terms",
+                  "id": "2",
+                  "settings": {
+                    "order": "asc",
+                    "size": "0",
+                    "orderBy": "_term"
+                  },
+                  "field": "ResponseMessage"
+                }
+              ],
+              "timeField": "timestamp"
+            }
+          ],
+          "transform": "json",
+          "pageSize": null,
+          "showHeader": true,
+          "columns": [
+            {
+              "text": "ResponseCode",
+              "value": "ResponseCode"
+            },
+            {
+              "text": "ResponseMessage",
+              "value": "ResponseMessage"
+            },
+            {
+              "text": "Count",
+              "value": "Count"
+            }
+          ],
+          "scroll": true,
+          "fontSize": "100%",
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "links": [],
+          "datasource": "ElasticInfl"
+        },
+        {
+          "title": "Assertions Failure ( smartmeter )",
+          "error": false,
+          "span": 8.875793513379751,
+          "editable": true,
+          "type": "table",
+          "isNew": true,
+          "id": 12,
+          "styles": [
+            {
+              "unit": "short",
+              "type": "number",
+              "decimals": 0,
+              "colors": [
+                "rgba(245, 54, 54, 0.9)",
+                "rgba(237, 129, 40, 0.89)",
+                "rgba(50, 172, 45, 0.97)"
+              ],
+              "colorMode": null,
+              "pattern": "/.*/",
+              "thresholds": []
+            }
+          ],
+          "targets": [
+            {
+              "refId": "A",
+              "metrics": [
+                {
+                  "type": "count",
+                  "id": "1",
+                  "field": "select field"
+                }
+              ],
+              "dsType": "elasticsearch",
+              "bucketAggs": [
+                {
+                  "type": "terms",
+                  "id": "2",
+                  "settings": {
+                    "order": "asc",
+                    "size": "0",
+                    "orderBy": "_term"
+                  },
+                  "field": "Assertions.FailureMessage"
+                }
+              ],
+              "timeField": "timestamp"
+            }
+          ],
+          "transform": "json",
+          "pageSize": null,
+          "showHeader": true,
+          "columns": [
+            {
+              "text": "Count",
+              "value": "Count"
+            },
+            {
+              "text": "Assertions.FailureMessage",
+              "value": "Assertions.FailureMessage"
+            }
+          ],
+          "scroll": true,
+          "fontSize": "100%",
+          "sort": {
+            "col": 0,
+            "desc": true
+          },
+          "datasource": "ElasticInfl",
+          "links": []
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "title": "New row",
+      "height": 11.203125,
+      "editable": true,
+      "collapse": false,
+      "panels": []
+    }
+  ],
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {
+    "now": true,
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": "10s",
+  "schemaVersion": 8,
+  "version": 28,
+  "links": []
+}
