@@ -90,6 +90,7 @@ For generate .jtl you must add `et@sm - Controller Summary Report` Listener.
 
 For real-time view on performance test, you cau use [Elasticsearch](https://www.elastic.co/) and [Kibana](https://www.elastic.co/products/kibana) or [Grafana](http://grafana.org/).
 Actually is supported Elasticsearch 1.5.2 - development of supporting Elasticsearch 2.x is in progress.
+Name of cluster must be `elasticsearch`.
 
 For sending data to Elasticsearch you must added BackendListener `ElasticSearchBackendListenerClient` with options
 * `elasticsearchCluster` is ip your Elasticsearch cluster, format: `ip:9300`
