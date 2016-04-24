@@ -26,14 +26,15 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
     wget ${SMARTMETER_URL} && \
     tar -zxf ${SMARTMETER_DIRECTORY}.tar.gz && rm ${SMARTMETER_DIRECTORY}.tar.gz && \
 
-    # install elasticsearch and lucene
+    # install Elasticsearch and Lucene
     cd ${SMARTMETER_PATH}programs/apache-jmeter/lib && \
     wget http://central.maven.org/maven2/org/elasticsearch/elasticsearch/${ELASTICSEARCH_VERSION}/elasticsearch-${ELASTICSEARCH_VERSION}.jar &&\
     wget http://central.maven.org/maven2/org/apache/lucene/lucene-core/${LUCENE_CORE_VERSION}/lucene-core-${LUCENE_CORE_VERSION}.jar && \
-    wget http://central.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/${LUCENE_COMMON_ANALYZERS}/lucene-analyzers-common-${LUCENE_COMMON_ANALYZERS}.jar
+    wget http://central.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/${LUCENE_COMMON_ANALYZERS}/lucene-analyzers-common-${LUCENE_COMMON_ANALYZERS}.jar && \
 
-# Add ElasticSearchBackendListener
-ADD smartmeter-elasticsearch.jar ${SMARTMETER_PATH}programs/apache-jmeter/lib/ext/
+    # install Elasticsearch Backend Listener
+    cd ${SMARTMETER_PATH}programs/apache-jmeter/lib/ext/ && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/out/artifacts/ElasticSearchBackendListenerClient/ElasticSearchBackendListenerClient.jar
 
 WORKDIR ${SMARTMETER_PATH}
 ENTRYPOINT ["./SmartMeter.sh", "runTestNonGui"]
