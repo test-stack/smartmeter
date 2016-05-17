@@ -8,13 +8,6 @@ ENV SMARTMETER_DIRECTORY SmartMeter_${SMARTMETER_VERSION}L_Light
 ENV SMARTMETER_URL http://smartmeter-api.etnetera.cz/download/release/${SMARTMETER_VERSION}/linux/light/full/${SMARTMETER_DIRECTORY}.tar.gz
 ENV SMARTMETER_PATH /srv/var/${SMARTMETER_DIRECTORY}/sm-linux-light-full-${SMARTMETER_VERSION}/
 
-# dependency env
-ENV MVN_REPOSITORY http://central.maven.org/maven2/org/
-ENV ELASTICSEARCH_VERSION 1.5.2
-ENV ELASTICSEARCH_LINK ${MVN_REPOSITORY}elasticsearch/elasticsearch/${ELASTICSEARCH_VERSION}/elasticsearch-${ELASTICSEARCH_VERSION}.jar
-ENV LUCENE_CORE_VERSION 4.10.4
-ENV LUCENE_COMMON_ANALYZERS 4.10.4
-
 # Automagically accept Oracle's license (for oracle-java8-installer)
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
     add-apt-repository ppa:webupd8team/java && \
@@ -26,13 +19,23 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
     wget ${SMARTMETER_URL} && \
     tar -zxf ${SMARTMETER_DIRECTORY}.tar.gz && rm ${SMARTMETER_DIRECTORY}.tar.gz && \
 
-    # install Elasticsearch and Lucene
+    # Download depending
     cd ${SMARTMETER_PATH}programs/apache-jmeter/lib && \
-    wget http://central.maven.org/maven2/org/elasticsearch/elasticsearch/${ELASTICSEARCH_VERSION}/elasticsearch-${ELASTICSEARCH_VERSION}.jar &&\
-    wget http://central.maven.org/maven2/org/apache/lucene/lucene-core/${LUCENE_CORE_VERSION}/lucene-core-${LUCENE_CORE_VERSION}.jar && \
-    wget http://central.maven.org/maven2/org/apache/lucene/lucene-analyzers-common/${LUCENE_COMMON_ANALYZERS}/lucene-analyzers-common-${LUCENE_COMMON_ANALYZERS}.jar && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/lib/elasticsearch-2.3.2.jar && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/lib/hppc-0.7.1.jar && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/lib/jackson-core-2.6.2.jar && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/lib/joda-time-2.8.2.jar && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/lib/jsr166e-1.1.0.jar && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/lib/lucene-analyzers-common-5.5.0.jar && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/lib/lucene-core-5.5.0.jar && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/lib/netty-3.10.5.Final.jar && \
+    wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/lib/t-digest-3.0.jar && \
+    ls -lah && \
 
-    # install Elasticsearch Backend Listener
+    # Remove old .jar
+    rm -rf jackson-core-2.4.4.jar netty-3.5.5.Final.jar && \
+
+    # Download Elasticsearch Backend Listener
     cd ${SMARTMETER_PATH}programs/apache-jmeter/lib/ext/ && \
     wget https://github.com/test-stack/elasticSearchBackendListenerClient/raw/master/out/artifacts/ElasticSearchBackendListenerClient/ElasticSearchBackendListenerClient.jar
 
