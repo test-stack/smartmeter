@@ -4,7 +4,7 @@
 
 
 NAME=rdpanek/smartmeter
-VERSION=1.1.0
+VERSION=latest
 PARAM=$(filter-out $@,$(MAKECMDGOALS))
 SMARTMETER_PATH=/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/
 
