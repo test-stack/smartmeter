@@ -7,9 +7,7 @@ This image is usefull for CI, CD and QA team, because enabling very quickly perf
 
 * Smartmeter 1.1.0 [Changelog](https://www.smartmeter.io/documentation#toc-changelog)
 * smartmeter-elasticsearch.jar ( ElasticSearchBackendListenerClient ) for sending results of samples to Elasticsearch
-* elasticsearch.jar 1.5.2
-* lucene_core.jar 4.10.4
-* lucene_common_analyzers.jar 4.10.4
+* elasticsearch.jar 2.3.2
 
 ![Smartmeter](https://raw.githubusercontent.com/test-stack/smartmeter/master/docs/smartmeterDashboard.png)
 
@@ -17,8 +15,6 @@ This image is usefull for CI, CD and QA team, because enabling very quickly perf
 
 1a). pull image from Docker repository
 ```
-docker pull rdpanek/smartmeter:1.1.0
-- or -
 docker pull rdpanek/smartmeter:latest
 ```
 
@@ -50,7 +46,7 @@ git pull https://github.com/test-stack/smartmeter
 
 4a). run with params
 ```
-docker run --rm --name smartmeter -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/tests/ -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/logs/ -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/results/ -v `pwd`/custom/:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/custom/ rdpanek/smartmeter:1.1.0 TestPlan.jmx
+docker run --rm --name smartmeter -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/tests/ -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/logs/ -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/results/ -v `pwd`/custom/:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/custom/ rdpanek/smartmeter:latest TestPlan.jmx
 ```
 
 4b). or via Makefile
@@ -269,7 +265,7 @@ Check successfully template was added
   ...
 ```
 
-Check our Kibana
+Check Kibana
 ![Kibana](https://raw.githubusercontent.com/test-stack/smartmeter/master/docs/kibana.png)
 
 **Congratulations, let's run performance tests** | Less code more tests
