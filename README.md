@@ -23,9 +23,9 @@ docker pull rdpanek/smartmeter:latest
 git pull https://github.com/test-stack/smartmeter
 ```
 
-2). create `/custom` folders for dataproviders, smartmeter.properties, license and other files attached in test plan
+2). update `/custom/smartmeter.properties` and add license.bin
 
-3). create custom TestPlan.jmx at downloaded git repository
+3). create custom TestPlan.jmx and add to `tests` directory
 
 Example:
 
@@ -34,11 +34,10 @@ git pull https://github.com/test-stack/smartmeter
 - smartmeter
   + custom/
   + docs/
+  + TestPlan.jmx
   + Dockerfile
   + Makefile
   + Readme.md
-  + TestPlan.jmx
-  + smartmeter-elasticsearch.jar
   + smartmeterElasticMapping.txt
 
 
