@@ -6,10 +6,14 @@ This image is usefull for CI, CD and QA team, because enabling very quickly perf
 ## Docker image contains
 
 * Smartmeter 1.1.0 [Changelog](https://www.smartmeter.io/documentation#toc-changelog)
-* smartmeter-elasticsearch.jar ( ElasticSearchBackendListenerClient ) for sending results of samples to Elasticsearch
+* ElasticSearchBackendListenerClient.jar sending results of samples to Elasticsearch
 * elasticsearch.jar 2.3.2
 
 ![Smartmeter](https://raw.githubusercontent.com/test-stack/smartmeter/master/docs/smartmeterDashboard.png)
+
+## ElasticSearchBackendListenerClient Plugin
+
+JMeter GUI [how to install](https://github.com/test-stack/elasticSearchBackendListenerClient)
 
 ## How to use
 
@@ -53,7 +57,7 @@ docker run --rm --name smartmeter -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-l
 make run TestPlan.jmx
 ```
 
-During a test launch, you can see
+After a test launch, you can see
 
 ```
 SmartMeter +      9 in  25.4s =    0.4/s Avg:  1399 Min:    72 Max:  3724 Err:     0 (0.00%) Active: 2 Started: 2 Finished: 0
@@ -61,7 +65,7 @@ SmartMeter +     29 in  27.3s =    1.1/s Avg:  2240 Min:    73 Max: 10375 Err:  
 SmartMeter =     38 in    53s =    0.7/s Avg:  2041 Min:    72 Max: 10375 Err:     0 (0.00%)
 ```
 
-After end of test will be container removed.
+Container will be removed after end of test.
 
 ## Results
 
