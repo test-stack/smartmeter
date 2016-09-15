@@ -142,11 +142,11 @@ For sending data to Elasticsearch you must added BackendListener `ElasticSearchB
 Create `smartmeter` template
 
 ```
-# PUT http://xxx.xxx.xxx.xxx:9200/_template/smartmeter
+# PUT http://xxx.xxx.xxx.xxx:9200/_template/smartmeterv2
 {
-    "template": "smartmeter-*",
+    "template": "smartmeterv2-*",
     "mappings": {
-        "smartmeter": {
+        "smartmeterv2": {
             "dynamic": "strict",
             "properties": {
                 "AllThreads": {
@@ -245,6 +245,30 @@ Create `smartmeter` template
                 "timestamp": {
                     "type": "date",
                     "format": "dateOptionalTime"
+                },
+                "release": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                },
+                "testPlanName": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                },
+                "RequestHeaders": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                },
+                "ResponseData": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                },
+                "DataEncoding": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                },
+                "SamplerData": {
+                    "type": "string",
+                    "index": "not_analyzed"
                 }
             }
         }
