@@ -260,13 +260,21 @@ Create `smartmeter` template
                 },
                 "ResponseData": {
                     "type": "string",
-                    "index": "not_analyzed"
+                    "index": "no"
                 },
                 "DataEncoding": {
                     "type": "string",
                     "index": "not_analyzed"
                 },
                 "SamplerData": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                },
+                "SubResults": {
+                    "type": "string",
+                    "index": "not_analyzed"
+                },
+                "verbose": {
                     "type": "string",
                     "index": "not_analyzed"
                 }
@@ -284,7 +292,7 @@ Check successfully template was added
 {
   "smartmeter": {
     "order": 0,
-    "template": "smartmeter-*",
+    "template": "smartmeterv2-*",
     "settings": {},
     "mappings": {
       "smartmeter": {

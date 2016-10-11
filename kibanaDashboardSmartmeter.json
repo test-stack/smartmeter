@@ -1,18 +1,18 @@
 [
   {
-    "_id": "Smartmeter",
+    "_id": "Performance-tests-analysis-summary",
     "_type": "dashboard",
     "_source": {
-      "title": "Smartmeter",
+      "title": "Performance tests analysis summary",
       "hits": 0,
       "description": "",
-      "panelsJSON": "[{\"col\":3,\"id\":\"Errors-(-smartmeter-)\",\"panelIndex\":2,\"row\":1,\"size_x\":2,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Transactions-(-smartmeter-)\",\"panelIndex\":12,\"row\":1,\"size_x\":2,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Response-time-by-Samples-(-smartmeter-)\",\"panelIndex\":13,\"row\":3,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Threads-by-Sample-(-smartmeter-)\",\"panelIndex\":14,\"row\":3,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":5,\"id\":\"Success-transaction-(-smartmeter-)\",\"panelIndex\":15,\"row\":1,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":9,\"id\":\"Status-Code-(-smartmeter-)\",\"panelIndex\":16,\"row\":1,\"size_x\":4,\"size_y\":2,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Overview-per-Samples-(-smartmeter-)\",\"panelIndex\":17,\"row\":7,\"size_x\":12,\"size_y\":7,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Assertations-(-smartmeter-)\",\"panelIndex\":18,\"row\":14,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":7,\"id\":\"Failure-Assertations-(-smartmeter-)\",\"panelIndex\":19,\"row\":18,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Response-Message-(-smartmeter-)\",\"panelIndex\":20,\"row\":14,\"size_x\":3,\"size_y\":4,\"type\":\"visualization\"},{\"col\":4,\"id\":\"Response-Code-(-smartmeter-)\",\"panelIndex\":21,\"row\":14,\"size_x\":3,\"size_y\":4,\"type\":\"visualization\"},{\"col\":1,\"id\":\"Target-URL-(-smartmeter-)\",\"panelIndex\":22,\"row\":18,\"size_x\":6,\"size_y\":4,\"type\":\"visualization\"}]",
-      "optionsJSON": "{\"darkTheme\":false}",
-      "uiStateJSON": "{\"P-15\":{\"vis\":{\"colors\":{\"true\":\"#629E51\",\"false\":\"#E24D42\"}}}}",
+      "panelsJSON": "[{\"id\":\"Transactions-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":1,\"size_x\":2,\"size_y\":2,\"col\":1,\"row\":1},{\"id\":\"Errors-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":2,\"size_x\":2,\"size_y\":2,\"col\":3,\"row\":1},{\"id\":\"All-Threads-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":3,\"size_x\":8,\"size_y\":5,\"col\":5,\"row\":1},{\"id\":\"Release-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":4,\"size_x\":4,\"size_y\":3,\"col\":1,\"row\":3},{\"id\":\"Threads-by-Sample-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":5,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":10},{\"id\":\"Transaction-per-seconds-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":7,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":6},{\"id\":\"Transaction-per-seconds-aggregate-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":8,\"size_x\":6,\"size_y\":4,\"col\":7,\"row\":6},{\"id\":\"Status-Code-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":9,\"size_x\":6,\"size_y\":4,\"col\":7,\"row\":10},{\"id\":\"Response-time-by-Samples-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":10,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":14},{\"id\":\"Response-time-aggregate-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":11,\"size_x\":6,\"size_y\":4,\"col\":7,\"row\":14},{\"id\":\"Overview-per-Samples-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":12,\"size_x\":10,\"size_y\":6,\"col\":1,\"row\":22},{\"id\":\"Time-Metric-Info-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":13,\"size_x\":2,\"size_y\":6,\"col\":11,\"row\":22},{\"id\":\"Failed-Requests-Summary-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":14,\"size_x\":12,\"size_y\":5,\"col\":1,\"row\":28},{\"id\":\"Failure-Assertations-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":15,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":33},{\"id\":\"Assertations-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":16,\"size_x\":6,\"size_y\":4,\"col\":7,\"row\":33},{\"id\":\"Response-Message-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":17,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":18},{\"id\":\"Response-Code-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":18,\"size_x\":6,\"size_y\":4,\"col\":7,\"row\":18},{\"id\":\"Target-URL-(-smartmeter-)\",\"type\":\"visualization\",\"panelIndex\":19,\"size_x\":6,\"size_y\":4,\"col\":1,\"row\":37}]",
+      "optionsJSON": "{\"darkTheme\":true}",
+      "uiStateJSON": "{}",
       "version": 1,
       "timeRestore": false,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"query\":\"*\",\"analyze_wildcard\":true}}}]}"
       }
     }
   }
