@@ -4,16 +4,13 @@
 
 
 NAME=rdpanek/smartmeter
-VERSION=1.1.0.5
+VERSION=1.3.0
 PARAM=$(filter-out $@,$(MAKECMDGOALS))
-SMARTMETER_PATH=/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/
+SMARTMETER_PATH=/home/SmartMeter_1.3.0_linux/
 
 
 default:
 	@echo Please use \'make build\'
-
-build:
-	docker build --rm -t $(NAME):$(VERSION) .
 
 run:
 	docker run --rm --name smartmeter \

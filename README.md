@@ -1,25 +1,24 @@
-# Unofficial Docker Smartmeter 1.1.0 image
+# Unofficial Docker SmartMeter_1.3.0-SNAPSHOT-161104-1714_L_Light image
 [Smartmeter](https://www.smartmeter.io/) is very powerfull aplication for Performance testing
 
 This image is usefull for CI, CD and QA team, because enabling very quickly perform [Performance testing](https://en.wikipedia.org/wiki/Software_performance_testing)
 
 ## Docker image contains
 
-* Smartmeter 1.1.0 [Changelog](https://www.smartmeter.io/documentation#toc-changelog)
-* ElasticSearchBackendListenerClient.jar sending results of samples to Elasticsearch
-* elasticsearch.jar 2.3.2
+* SmartMeter 1.3.0 [Changelog](http://smartmeter-api.etnetera.cz/download/nightly/CHANGELOG.html)
+* [ElasticSearchBackendListenerClient.jar](https://github.com/test-stack/elasticSearchBackendListenerClient)
 
 ![Smartmeter](https://raw.githubusercontent.com/test-stack/smartmeter/master/docs/smartmeterDashboard.png)
 
 ## ElasticSearchBackendListenerClient Plugin
 
-JMeter GUI [how to install](https://github.com/test-stack/elasticSearchBackendListenerClient)
+Sending data to Elasticsearch for analysis - [how to install](https://github.com/test-stack/elasticSearchBackendListenerClient)
 
 ## How to use
 
 1a). pull image from Docker repository
 ```
-docker pull rdpanek/smartmeter:latest
+docker pull rdpanek/smartmeter:1.3.0
 ```
 
 1b). pull git repository (it's recommended)
@@ -42,14 +41,17 @@ git pull https://github.com/test-stack/smartmeter
   + Dockerfile
   + Makefile
   + Readme.md
-  + smartmeterElasticMapping.txt
 
 
 ```
 
 4a). run with params
 ```
-docker run --rm --name smartmeter -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/tests/ -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/logs/ -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/results/ -v `pwd`/custom/:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/custom/ rdpanek/smartmeter:latest TestPlan.jmx
+docker run --rm --name smartmeter -v
+ `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/tests/ -v
+ `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/logs/ -v
+ `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/results/ -v
+ `pwd`/custom/:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/custom/ rdpanek/smartmeter:latest TestPlan.jmx
 ```
 
 4b). or via Makefile
@@ -158,12 +160,12 @@ Create `smartmeter` template
                             "type": "boolean"
                         },
                         "FailureMessage": {
-                            "type": "string",
-                            "index": "not_analyzed"
+                            "type": "text",
+                            "index": true
                         },
                         "Name": {
-                            "type": "string",
-                            "index": "not_analyzed"
+                            "type": "text",
+                            "index": true
                         }
                     }
                 },
@@ -177,10 +179,10 @@ Create `smartmeter` template
                     "type": "long"
                 },
                 "ContentType": {
-                    "type": "string"
+                    "type": "text"
                 },
                 "DataType": {
-                    "type": "string"
+                    "type": "text"
                 },
                 "ElapsedTime": {
                     "type": "long"
@@ -206,77 +208,81 @@ Create `smartmeter` template
                     "format": "dateOptionalTime"
                 },
                 "ResponseCode": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "ResponseMessage": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "text",
+                    "index": true
                 },
                 "ResponseTime": {
                     "type": "long"
                 },
                 "RunId": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "SampleCount": {
                     "type": "long"
                 },
                 "SampleLabel": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "StartTime": {
                     "type": "date",
                     "format": "dateOptionalTime"
                 },
                 "Success": {
-                    "type": "string"
+                    "type": "keyword"
                 },
                 "ThreadName": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "URL": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "timestamp": {
                     "type": "date",
                     "format": "dateOptionalTime"
                 },
                 "release": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "testPlanName": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "RequestHeaders": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "text",
+                    "index": true
                 },
                 "ResponseData": {
-                    "type": "string",
-                    "index": "no"
+                    "type": "text",
+                    "index": false
                 },
                 "DataEncoding": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": false
                 },
                 "SamplerData": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "text",
+                    "index": true
                 },
                 "SubResults": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "text",
+                    "index": true
                 },
                 "verbose": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": false
+                },
+                "flag": {
+                    "type": "keyword",
+                    "index": true
                 }
             }
         }
