@@ -1,69 +1,42 @@
-# Unofficial Docker Smartmeter 1.1.0 image
+# Unofficial Docker SmartMeter_1.3.0-SNAPSHOT-161104-1714_L_Light image
 [Smartmeter](https://www.smartmeter.io/) is very powerfull aplication for Performance testing
 
 This image is usefull for CI, CD and QA team, because enabling very quickly perform [Performance testing](https://en.wikipedia.org/wiki/Software_performance_testing)
 
 ## Docker image contains
 
-* Smartmeter 1.1.0 [Changelog](https://www.smartmeter.io/documentation#toc-changelog)
-* ElasticSearchBackendListenerClient.jar sending results of samples to Elasticsearch
-* elasticsearch.jar 2.3.2
-
-![Smartmeter](https://raw.githubusercontent.com/test-stack/smartmeter/master/docs/smartmeterDashboard.png)
-
-## ElasticSearchBackendListenerClient Plugin
-
-JMeter GUI [how to install](https://github.com/test-stack/elasticSearchBackendListenerClient)
+* SmartMeter 1.3.0 [Changelog](http://smartmeter-api.etnetera.cz/download/nightly/CHANGELOG.html)
+* [ElasticSearchBackendListenerClient.jar](https://github.com/test-stack/elasticSearchBackendListenerClient) JMeter plugin
 
 ## How to use
 
-1a). pull image from Docker repository
-```
-docker pull rdpanek/smartmeter:latest
-```
-
-1b). pull git repository (it's recommended)
+1). pull git repository (it's recommended)
 ```
 git pull https://github.com/test-stack/smartmeter
-```
 
-2). update `/custom/smartmeter.properties` and add license.bin
 
-3). create custom TestPlan.jmx and add to `tests` directory
-
-Example:
-
-```
-git pull https://github.com/test-stack/smartmeter
-- smartmeter
-  + custom/
-  + docs/
-  + TestPlan.jmx
-  + Dockerfile
-  + Makefile
-  + Readme.md
-  + smartmeterElasticMapping.txt
-
+- smartmeter/
+ + custom/
+ + Dockerfile
+ + docs/
+ + kibanaDashboardsSmartmeter.json
+ + kibanaVisualicationsSmartmeter.json
+ + Makefile
+ + README.md
 
 ```
+2). add [license.bin](https://www.smartmeter.io/download#licence) to `/custom` directory
 
-4a). run with params
-```
-docker run --rm --name smartmeter -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/tests/ -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/logs/ -v `pwd`:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/results/ -v `pwd`/custom/:/srv/var/SmartMeter_1.1.0L_Light/sm-linux-light-full-1.1.0/custom/ rdpanek/smartmeter:latest TestPlan.jmx
-```
+3). copy your TestPlan.jmx and dependencies to `/smartmeter`
 
-4b). or via Makefile
-```
-make run TestPlan.jmx
-```
-
-After a test launch, you can see
+4). run smartmeter via Docker
+```bash
+docker run --rm --name smartmeter -v `pwd`:/home/SmartMeter_1.3.0_linux/tests/ -v `pwd`:/home/SmartMeter_1.3.0_linux/logs/ -v `pwd`:/home/SmartMeter_1.3.0_linux/results/ -v `pwd`/custom/:/home/SmartMeter_1.3.0_linux/custom/ rdpanek/smartmeter:1.3.1 TestPlan.jmx
 
 ```
-SmartMeter +      9 in  25.4s =    0.4/s Avg:  1399 Min:    72 Max:  3724 Err:     0 (0.00%) Active: 2 Started: 2 Finished: 0
-SmartMeter +     29 in  27.3s =    1.1/s Avg:  2240 Min:    73 Max: 10375 Err:     0 (0.00%) Active: 5 Started: 5 Finished: 0
-SmartMeter =     38 in    53s =    0.7/s Avg:  2041 Min:    72 Max: 10375 Err:     0 (0.00%)
-```
+or
+
+`make run TestPlan.jmx`
 
 Container will be removed after end of test.
 
@@ -81,61 +54,20 @@ After running were created additional files in our `smartmeter` directory.
 * controller.log is usefull for debbuging
 * *.jtl is usefull for parsing via [Logstash](https://www.elastic.co/products/logstash) or [nxlog](http://nxlog.org/) or for generate [html report](http://rdpanek.cz/report-20160301-002656/)
 
-For generate .jtl you must add `et@sm - Controller Summary Report` Listener.
-![et@sm - Controller Summary Report](https://raw.githubusercontent.com/test-stack/smartmeter/master/docs/controllerSummaryReport.png)
-
-
 ## Setup Test Plan for support of Elasticserach
 
+![Smartmeter](https://raw.githubusercontent.com/test-stack/smartmeter/develop/docs/elasticSearchBackendListener.png)
+
+  * `elasticsearchCluster` is target instance of Elasticsearch
+  * `indexName` and `sampleType` only for experts
+  * `runId` is ID of unique run
+  * `release`, `testPlanName` and `flag` is a searchable labels
+  * `verbose` options `always|ifError|never` logs of requests and response
+
+Sends data to the Elasticsearch for analysis - [how to install](https://github.com/test-stack/elasticSearchBackendListenerClient)
+
+
 For real-time view on performance test, you cau use [Elasticsearch](https://www.elastic.co/) and [Kibana](https://www.elastic.co/products/kibana) or [Grafana](http://grafana.org/).
-Actually is supported Elasticsearch 1.5.2 - development of supporting Elasticsearch 2.x is in progress.
-Name of cluster must be `elasticsearch`.
-
-For sending data to Elasticsearch you must added BackendListener `ElasticSearchBackendListenerClient` with options
-* `elasticsearchCluster` is ip your Elasticsearch cluster, format: `ip:9300`
-* `indexName` smartmeter
-* `sampleType` smartmeter
-
-![ElasticSearchBackendListenerClient](https://raw.githubusercontent.com/test-stack/smartmeter/master/docs/elasticsearchBackendListener.png)
-
-### ElasticSearchBackendListenerClient JSON Payload
-
-```json
-{
-    "ContentType": "application/json; charset=utf-8",
-    "EndTime": "2016-02-29T19:36:32.032Z",
-    "IdleTime": 0,
-    "ElapsedTime": 136,
-    "ErrorCount": 0,
-    "Success": "true",
-    "URL": "http://xxx.xxx.xxx.xxx:4444/wd/hub/session/4ae60744-e660-44f8-bf3b-cd7628e46713",
-    "Bytes": 423,
-    "AllThreads": 10,
-    "NormalizedTimestamp": "2015-01-01T00:06:05.651Z",
-    "DataType": "text",
-    "ResponseTime": 136,
-    "SampleCount": 1,
-    "ConnectTime": 0,
-    "RunId": "fe2bd84c-1877-4e2d-a789-fa83ddd1e7b8",
-    "timestamp": "2016-02-29T19:36:31.896Z",
-    "ResponseCode": "200",
-    "StartTime": "2016-02-29T19:36:31.896Z",
-    "ResponseMessage": "OK",
-    "Assertions": [
-        {
-            "FailureMessage": "",
-            "Failure": false,
-            "Name": "sessionId Assertion"
-        }
-    ],
-    "Latency": 136,
-    "GrpThreads": 10,
-    "BodySize": 159,
-    "ThreadName": "VU 1-3",
-    "SampleLabel": "Delete browser instance"
-}
-
-```
 
 ## Setup Elasticsearch
 
@@ -158,12 +90,12 @@ Create `smartmeter` template
                             "type": "boolean"
                         },
                         "FailureMessage": {
-                            "type": "string",
-                            "index": "not_analyzed"
+                            "type": "text",
+                            "index": true
                         },
                         "Name": {
-                            "type": "string",
-                            "index": "not_analyzed"
+                            "type": "text",
+                            "index": true
                         }
                     }
                 },
@@ -177,10 +109,10 @@ Create `smartmeter` template
                     "type": "long"
                 },
                 "ContentType": {
-                    "type": "string"
+                    "type": "text"
                 },
                 "DataType": {
-                    "type": "string"
+                    "type": "text"
                 },
                 "ElapsedTime": {
                     "type": "long"
@@ -206,77 +138,81 @@ Create `smartmeter` template
                     "format": "dateOptionalTime"
                 },
                 "ResponseCode": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "ResponseMessage": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "text",
+                    "index": true
                 },
                 "ResponseTime": {
                     "type": "long"
                 },
                 "RunId": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "SampleCount": {
                     "type": "long"
                 },
                 "SampleLabel": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "StartTime": {
                     "type": "date",
                     "format": "dateOptionalTime"
                 },
                 "Success": {
-                    "type": "string"
+                    "type": "keyword"
                 },
                 "ThreadName": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "URL": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "timestamp": {
                     "type": "date",
                     "format": "dateOptionalTime"
                 },
                 "release": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "testPlanName": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": true
                 },
                 "RequestHeaders": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "text",
+                    "index": true
                 },
                 "ResponseData": {
-                    "type": "string",
-                    "index": "no"
+                    "type": "text",
+                    "index": false
                 },
                 "DataEncoding": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": false
                 },
                 "SamplerData": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "text",
+                    "index": true
                 },
                 "SubResults": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "text",
+                    "index": true
                 },
                 "verbose": {
-                    "type": "string",
-                    "index": "not_analyzed"
+                    "type": "keyword",
+                    "index": false
+                },
+                "flag": {
+                    "type": "keyword",
+                    "index": true
                 }
             }
         }
@@ -290,7 +226,7 @@ Check successfully template was added
 # GET http://xxx.xxx.xxx.xxx:9200/_template
 
 {
-  "smartmeter": {
+  "smartmeterv2": {
     "order": 0,
     "template": "smartmeterv2-*",
     "settings": {},
