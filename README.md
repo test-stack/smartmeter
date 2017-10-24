@@ -143,7 +143,12 @@ Create `smartmeter` template
                 },
                 "ResponseMessage": {
                     "type": "text",
-                    "index": true
+                    "index": true,
+                    "fields": {
+                      "raw": {
+                        "type": "keyword"
+                      }
+                    }
                 },
                 "ResponseTime": {
                     "type": "long"
